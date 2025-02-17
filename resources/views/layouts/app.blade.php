@@ -97,6 +97,12 @@
                                 Dashboard
                             </a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link fs-5" href="{{ route('user.point.index') }}">
+                                <i class="bi bi-file-earmark"></i>
+                                All Transactions
+                            </a>
+                        </li>
                     @endif
                 </ul>
             </div>
