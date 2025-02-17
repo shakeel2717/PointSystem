@@ -20,7 +20,11 @@
                 <a href="javascript:void(0);" data-bs-toggle="offcanvas" data-bs-target="#demo" class="fs-2 text-warning">
                     <i class="bi bi-list"></i>
                 </a>
-                <h4 class="mb-0">Dashboard</h4>
+                @if (auth()->user()->role == 'admin')
+                    <h4 class="mb-0">Admin Dashboard</h4>
+                @else
+                    <h4 class="mb-0">Dashboard</h4>
+                @endif
                 <div class="dropdown">
                     <a href="javascript:void(0);" class="text-decoration-none fs-2 text-warning dropdown-toggle"
                         data-bs-toggle="dropdown">
