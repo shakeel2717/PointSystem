@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
@@ -29,6 +30,21 @@ class EditPasswordController extends Controller
     public function store(Request $request)
     {
         //validation
+        $validated = $request->validate([
+            'current_password' => 'required',
+            'password' => 'required|min:4',
+        ]);
+
+        // Check if current password matches
+    if (!Hash::check($request->current_password, auth()->user()->password)) {
+        return back()->withErrors(['current_password' => 'The current password is incorrect.']);
+    }
+
+        $editpassword = User::find(auth()->id());
+        $editpassword->password = Hash::make($request->password);
+        $editpassword->save();
+
+        return redirect()->back()->with('success', 'Password Update Successfully!');
     }
 
     /**

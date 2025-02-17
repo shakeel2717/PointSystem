@@ -6,8 +6,8 @@
     <form action="{{ route('editpassword.store') }}" method="POST">
         @csrf
         <div class="form-floating mb-3 mt-3">
-            <input type="password" class="form-control" id="password" placeholder="Enter password" name="password">
-            <label for="password">Current Password</label>
+            <input type="password" class="form-control" id="current_password" placeholder="Enter password" name="current_password">
+            <label for="current_password">Current Password</label>
         </div>
 
         <div class="form-floating mb-3 mt-3">
