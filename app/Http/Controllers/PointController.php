@@ -5,15 +5,65 @@ namespace App\Http\Controllers;
 use App\Models\Point;
 use App\Http\Requests\StorePointRequest;
 use App\Http\Requests\UpdatePointRequest;
+use App\Models\User;
+use Illuminate\Http\Request;
 
 class PointController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function add()
     {
-        //
+        return view('admin.point.add');
+    }
+
+    public function addStore(Request $request)
+    {
+        $validted = $request->validate([
+            'email' => 'required|email|exists:users',
+            'amount' => 'required|numeric|digits_between:1,99999999999',
+            'reference' => 'nullable|string',
+        ]);
+
+        $user = User::where('email', $validted['email'])->firstOrFail();
+
+        $point = new Point();
+        $point->user_id = $user->id;
+        $point->amount = $validted['amount'];
+        $point->type = 'Deposit';
+        $point->sum = true;
+        $point->reference = $validted['reference'];
+        $point->save();
+
+        return redirect()->route('admin.dashboard.index')->with('success', 'Point added successfully');
+    }
+
+    public function charge()
+    {
+        return view('admin.point.charge');
+    }
+
+    public function chargeStore(Request $request)
+    {
+        $validted = $request->validate([
+            'email' => 'required|email|exists:users',
+            'amount' => 'required|numeric|digits_between:1,99999999999',
+            'type' => 'required|string',
+            'reference' => 'nullable|string',
+        ]);
+
+        $user = User::where('email', $validted['email'])->firstOrFail();
+
+        $point = new Point();
+        $point->user_id = $user->id;
+        $point->amount = $validted['amount'];
+        $point->type = $validted['type'];
+        $point->sum = false;
+        $point->reference = $validted['reference'];
+        $point->save();
+
+        return redirect()->route('admin.dashboard.index')->with('success', 'Point Charged successfully');
     }
 
     /**

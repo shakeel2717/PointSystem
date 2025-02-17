@@ -51,17 +51,57 @@
 
     @include('inc.alert')
 
-    <div class="offcanvas offcanvas-start" id="demo">
-        <div class="offcanvas-header">
-            <h1 class="offcanvas-title">Heading</h1>
-            <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas"></button>
+    @auth
+        <div class="offcanvas offcanvas-start" id="demo">
+            <div class="offcanvas-header">
+                <img src="{{ asset('logo-vr.png') }}" alt="Logo" width="100">
+                <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas"></button>
+            </div>
+            <div class="offcanvas-body">
+                <ul class="navbar-nav">
+                    @if (auth()->user()->role == 'admin')
+                        <li class="nav-item">
+                            <a class="nav-link fs-5" href="{{ route('admin.dashboard.index') }}">
+                                <i class="bi bi-grid"></i>
+                                Dashboard
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link fs-5" href="{{ route('admin.dashboard.index') }}">
+                                <i class="bi bi-people"></i>
+                                All Users
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link fs-5" href="{{ route('admin.point.add') }}">
+                                <i class="bi bi-plus-circle"></i>
+                                Add Points
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link fs-5" href="{{ route('admin.point.charge') }}">
+                                <i class="bi bi-dash-circle"></i>
+                                Charge Points
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link fs-5" href="{{ route('admin.dashboard.index') }}">
+                                <i class="bi bi-file-earmark"></i>
+                                All Transactions
+                            </a>
+                        </li>
+                    @else
+                        <li class="nav-item">
+                            <a class="nav-link fs-5" href="{{ route('user.dashboard.index') }}">
+                                <i class="bi bi-grid"></i>
+                                Dashboard
+                            </a>
+                        </li>
+                    @endif
+                </ul>
+            </div>
         </div>
-        <div class="offcanvas-body">
-            <p>Some text lorem ipsum.</p>
-            <p>Some text lorem ipsum.</p>
-            <button class="btn btn-secondary" type="button">A Button</button>
-        </div>
-    </div>
+    @endauth
 </body>
 
 </html>
