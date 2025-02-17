@@ -41,12 +41,14 @@
             </div>
         @endauth
         @yield('content')
-        <div class="logout-wrapper position-fixed bottom-0 start-0 w-100 pb-2">
-            <form action="{{ route('logout') }}" method="POST">
-                @csrf
-                <button type="submit" class="btn btn-lg btn-warning px-5 text-white">Sign Out</button>
-            </form>
-        </div>
+        @auth
+            <div class="logout-wrapper position-fixed bottom-0 start-0 w-100 pb-2">
+                <form action="{{ route('logout') }}" method="POST">
+                    @csrf
+                    <button type="submit" class="btn btn-lg btn-warning px-5 text-white">Sign Out</button>
+                </form>
+            </div>
+        @endauth
     </div>
 
     @include('inc.alert')
