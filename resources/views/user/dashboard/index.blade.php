@@ -2,7 +2,7 @@
 @section('content')
     <div class="row mt-4">
         <div class="col-md-12">
-            <h1>{{ number_format(4654, 2) }}</h1>
+            <h1>{{ number_format(auth()->user()->balance(), 2) }}</h1>
             <h5>Available Points</h5>
         </div>
     </div>
@@ -13,7 +13,8 @@
                 <div class="card-body text-white">
                     <div class="d-flex justify-content-between">
                         <h6 class="mb-0">Spend This Month</h6>
-                        <h6 class="mb-0"><i class="bi bi-dash-circle"></i> {{ number_format(4654, 2) }} Points</h6>
+                        <h6 class="mb-0"><i class="bi bi-dash-circle"></i>
+                            {{ number_format(auth()->user()->spendThisMonth(), 2) }} Points</h6>
                     </div>
                 </div>
             </div>
@@ -23,7 +24,8 @@
                 <div class="card-body text-white">
                     <div class="d-flex justify-content-between">
                         <h6 class="mb-0">Total Collection</h6>
-                        <h6 class="mb-0"><i class="bi bi-plus-circle"></i> {{ number_format(123465, 2) }} Points</h6>
+                        <h6 class="mb-0"><i class="bi bi-plus-circle"></i>
+                            {{ number_format(auth()->user()->totalCollection(), 2) }} Points</h6>
                     </div>
                 </div>
             </div>
@@ -37,18 +39,17 @@
                     <div class="table-responsive">
                         <table class="table table-borderless">
                             <tbody>
-                                <tr>
-                                    <th class="text-muted text-start">Hair Cutting</th>
-                                    <td class="text-muted text-end">{{ number_format(213, 2) }} Points</td>
-                                </tr>
-                                <tr>
-                                    <th class="text-muted text-start">Hair Cutting</th>
-                                    <td class="text-muted text-end">{{ number_format(213, 2) }} Points</td>
-                                </tr>
-                                <tr>
-                                    <th class="text-muted text-start">Hair Cutting</th>
-                                    <td class="text-muted text-end">{{ number_format(213, 2) }} Points</td>
-                                </tr>
+                                @forelse (auth()->user()->points()->latest()->take(5)->get() as $point)
+                                    <tr>
+                                        <th class="text-muted text-start">{{ $point->type }}</th>
+                                        <td class="text-muted text-end">
+                                            {{ $point->sum ? '+' : '-' }}{{ number_format($point->amount, 2) }} Points</td>
+                                    </tr>
+                                @empty
+                                    <tr>
+                                        <th colspan="2" class="text-muted text-start">NO Transaction Found</th>
+                                    </tr>
+                                @endforelse
                             </tbody>
                         </table>
                     </div>

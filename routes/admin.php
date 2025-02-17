@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Route;
 Route::prefix('admin')->name('admin.')->middleware('auth', CheckIfUserIsAdmin::class)->group(function () {
     Route::resource('dashboard', DashboardController::class);
     Route::controller(PointController::class)->name('point.')->group(function () {
+        Route::get('index', 'index')->name('index');
         Route::get('add', 'add')->name('add');
         Route::post('add', 'addStore')->name('add.store');
         Route::get('charge', 'charge')->name('charge');

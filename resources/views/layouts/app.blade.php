@@ -85,7 +85,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link fs-5" href="{{ route('admin.dashboard.index') }}">
+                            <a class="nav-link fs-5" href="{{ route('admin.point.index') }}">
                                 <i class="bi bi-file-earmark"></i>
                                 All Transactions
                             </a>

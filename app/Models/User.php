@@ -51,4 +51,26 @@ class User extends Authenticatable
     {
         return $this->hasMany(Point::class);
     }
+
+    public function balance()
+    {
+        $in = Point::where('sum', true)->sum('amount');
+        $out = Point::where('sum', false)->sum('amount');
+
+        return $in - $out;
+    }
+
+    public function spendThisMonth()
+    {
+        $out = Point::where('sum', false)->whereMonth('created_at', now()->month)->sum('amount');
+
+        return $out;
+    }
+
+    public function totalCollection()
+    {
+        $in = Point::where('sum', true)->sum('amount');
+
+        return $in;
+    }
 }

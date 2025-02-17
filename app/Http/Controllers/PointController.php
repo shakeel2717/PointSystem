@@ -13,9 +13,18 @@ class PointController extends Controller
     /**
      * Display a listing of the resource.
      */
+
+    public function index()
+    {
+        $points = Point::latest()->simplePaginate(10);
+        return view('admin.point.index', compact('points'));
+    }
+
+
     public function add()
     {
-        return view('admin.point.add');
+        $points = Point::where('sum', true)->get();
+        return view('admin.point.add', compact('points'));
     }
 
     public function addStore(Request $request)
@@ -41,7 +50,8 @@ class PointController extends Controller
 
     public function charge()
     {
-        return view('admin.point.charge');
+        $points = Point::where('sum', false)->get();
+        return view('admin.point.charge', compact('points'));
     }
 
     public function chargeStore(Request $request)
