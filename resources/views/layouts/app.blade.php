@@ -31,8 +31,8 @@
                         <i class="bi bi-person-circle"></i>
                     </a>
                     <ul class="dropdown-menu border-0 shadow" style="z-index: 9999">
-                        <li><a class="dropdown-item text-muted" href="#">My Profile</a></li>
-                        <li><a class="dropdown-item text-muted" href="#">Change Password</a></li>
+                        <li><a class="dropdown-item text-muted" href="{{ route('editprofile.index') }}">My Profile</a></li>
+                        <li><a class="dropdown-item text-muted" href="{{ route('editpassword.index') }}">Change Password</a></li>
                         <hr>
                         <li><a class="dropdown-item text-muted text-danger"
                                 onclick="event.preventDefault(); document.getElementById('logout-form').submit()"
