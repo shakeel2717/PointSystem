@@ -16,6 +16,11 @@
         </div>
 
         <div class="form-floating mb-3 mt-3">
+            <input type="phone" class="form-control" id="phone" placeholder="Enter phone" name="phone">
+            <label for="phone">Phone</label>
+        </div>
+
+        <div class="form-floating mb-3 mt-3">
             <input type="password" class="form-control" id="password" placeholder="Enter password" name="password">
             <label for="password">Password</label>
         </div>
