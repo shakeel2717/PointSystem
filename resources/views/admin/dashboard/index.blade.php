@@ -17,8 +17,9 @@
                     <div class="d-flex justify-content-between">
                         <h6 class="mb-0">Total User's Points</h6>
                         <h6 class="mb-0">
-                            {{ number_format($allPoints->where('sum', true)->sum('amount') - $allPoints->where('sum', false)->sum('amount'), 2) }}
-                            Points</h6>
+                            {{ $allPoints->where('sum', true)->sum('amount') - $allPoints->where('sum', false)->sum('amount') }}
+                            Users
+                        </h6>
                     </div>
                 </div>
             </div>
