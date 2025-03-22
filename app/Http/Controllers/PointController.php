@@ -57,13 +57,13 @@ class PointController extends Controller
     public function chargeStore(Request $request)
     {
         $validted = $request->validate([
-            'email' => 'required|email|exists:users',
+            'phone' => 'required|numeric|exists:users',
             'amount' => 'required|numeric|digits_between:1,99999999999',
             'type' => 'required|string',
             'reference' => 'nullable|string',
         ]);
 
-        $user = User::where('email', $validted['email'])->firstOrFail();
+        $user = User::where('phone', $validted['phone'])->firstOrFail();
 
         $point = new Point();
         $point->user_id = $user->id;

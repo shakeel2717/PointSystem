@@ -4,8 +4,8 @@
         <form action="{{ route('admin.point.charge.store') }}" method="POST">
             @csrf
             <div class="form-floating mb-3 mt-3">
-                <input type="email" class="form-control" id="email" placeholder="Enter email" name="email">
-                <label for="email">Email</label>
+                <input type="text" class="form-control" id="phone" placeholder="Enter phone" name="phone">
+                <label for="phone">phone</label>
             </div>
 
             <div class="form-floating mb-3 mt-3">
