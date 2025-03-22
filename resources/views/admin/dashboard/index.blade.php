@@ -34,27 +34,29 @@
     </div>
     <div class="row">
         <div class="col-md-12">
-            <div class="card border-0 mt-5">
-                <h4 class="card-title">Recent Transactions</h4>
-                <div class="table-responsive">
-                    <table class="table table-borderless">
-                        <tbody>
-                            <tr class="bg-white shadow-sm border-muted rounded-3 border">
-                                <th class="text-muted text-start">Ali Hassan <br> <small class="fw-light">1 day
-                                        ago</small></th>
-                                <th class="text-muted text-end">{{ number_format(213, 2) }} Points <br> <small
-                                        class="fw-light">Hair Cutting</small></th>
-                                <td class="text-muted text-end"></td>
-                            </tr>
-                            <tr class="bg-white shadow-sm border-muted rounded-3 border">
-                                <th class="text-muted text-start">Ali Hassan <br> <small class="fw-light">1 day
-                                        ago</small></th>
-                                <th class="text-muted text-end">{{ number_format(213, 2) }} Points <br> <small
-                                        class="fw-light">Hair Cutting</small></th>
-                                <td class="text-muted text-end"></td>
-                            </tr>
-                        </tbody>
-                    </table>
+            <div class="card border-0 shadow mt-4">
+                <div class="card-body">
+                    <h4 class="card-title">Recent Transactions</h4>
+                    <div class="table-responsive">
+                        <table class="table table-borderless">
+                            <tbody>
+                                @forelse ($points as $point)
+                                    <tr>
+                                        <th class="text-muted text-start">
+                                            <h5>{{ $point->user->name }}</h5>
+                                            <h6>{{ $point->type }}</h6>
+                                        </th>
+                                        <td class="text-muted text-end">
+                                            {{ $point->sum ? '+' : '-' }}{{ number_format($point->amount, 2) }} Points</td>
+                                    </tr>
+                                @empty
+                                    <tr>
+                                        <th colspan="2" class="text-muted text-start">NO Transaction Found</th>
+                                    </tr>
+                                @endforelse
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>
