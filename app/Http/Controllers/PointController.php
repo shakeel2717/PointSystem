@@ -65,6 +65,10 @@ class PointController extends Controller
 
         $user = User::where('phone', $validted['phone'])->firstOrFail();
 
+        if($user->balance() < $validted['amount']){
+            return back()->withErrors(['amount' => 'Insufficient Balance']);
+        }
+
         $point = new Point();
         $point->user_id = $user->id;
         $point->amount = $validted['amount'];

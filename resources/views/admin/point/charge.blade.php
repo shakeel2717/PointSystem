@@ -5,7 +5,7 @@
             @csrf
             <div class="form-floating mb-3 mt-3">
                 <input type="text" class="form-control" id="phone" placeholder="Enter phone" name="phone">
-                <label for="phone">phone</label>
+                <label for="phone">Phone</label>
             </div>
 
             <div class="form-floating mb-3 mt-3">
