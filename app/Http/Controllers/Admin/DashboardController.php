@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Point;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class DashboardController extends Controller
@@ -13,8 +14,10 @@ class DashboardController extends Controller
      */
     public function index()
     {
+        $users = User::get();
         $points = Point::latest()->limit(10)->get();
-        return view('admin.dashboard.index', compact('points'));
+        $allPoints = Point::latest()->limit(10)->get();
+        return view('admin.dashboard.index', compact('points', 'users', 'allPoints'));
     }
 
     /**

@@ -6,7 +6,7 @@
                 <div class="card-body text-white">
                     <div class="d-flex justify-content-between">
                         <h6 class="mb-0">Total Users</h6>
-                        <h6 class="mb-0"> {{ number_format(4654, 2) }} Points</h6>
+                        <h6 class="mb-0"> {{ number_format($users->count(), 2) }} Points</h6>
                     </div>
                 </div>
             </div>
@@ -16,7 +16,9 @@
                 <div class="card-body text-white">
                     <div class="d-flex justify-content-between">
                         <h6 class="mb-0">Total User's Points</h6>
-                        <h6 class="mb-0"> {{ number_format(123465, 2) }} Points</h6>
+                        <h6 class="mb-0">
+                            {{ number_format($allPoints->where('sum', true)->sum('amount') - $allPoints->where('sum', false)->sum('amount'), 2) }}
+                            Points</h6>
                     </div>
                 </div>
             </div>
@@ -26,7 +28,7 @@
                 <div class="card-body text-white">
                     <div class="d-flex justify-content-between">
                         <h6 class="mb-0">Total Used Points</h6>
-                        <h6 class="mb-0"> {{ number_format(123465, 2) }} Points</h6>
+                        <h6 class="mb-0"> {{ number_format($allPoints->where('sum', false)->sum('amount'), 2) }} Points</h6>
                     </div>
                 </div>
             </div>
@@ -47,7 +49,8 @@
                                             <h6>{{ $point->type }}</h6>
                                         </th>
                                         <td class="text-muted text-end">
-                                            {{ $point->sum ? '+' : '-' }}{{ number_format($point->amount, 2) }} Points</td>
+                                            {{ $point->sum ? '+' : '-' }}{{ number_format($point->amount, 2) }} Points
+                                        </td>
                                     </tr>
                                 @empty
                                     <tr>
