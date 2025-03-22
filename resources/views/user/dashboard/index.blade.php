@@ -41,7 +41,12 @@
                             <tbody>
                                 @forelse (auth()->user()->points()->latest()->take(5)->get() as $point)
                                     <tr>
-                                        <th class="text-muted text-start">{{ $point->type }}</th>
+                                        <th class="text-muted text-start">
+                                            <h6>
+                                                {{ $point->type }}
+                                            </h6>
+                                            <p>{{ $point->created_at->diffForHumans() }}</p>
+                                        </th>
                                         <td class="text-muted text-end">
                                             {{ $point->sum ? '+' : '-' }}{{ number_format($point->amount, 2) }} Points</td>
                                     </tr>
