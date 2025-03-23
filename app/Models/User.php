@@ -63,14 +63,14 @@ class User extends Authenticatable
 
     public function spendThisMonth()
     {
-        $out = Point::where('sum', false)->whereMonth('created_at', now()->month)->sum('amount');
+        $out = Point::where('user_id', $this->id)->where('sum', false)->whereMonth('created_at', now()->month)->sum('amount');
 
         return $out;
     }
 
     public function totalCollection()
     {
-        $in = Point::where('sum', true)->sum('amount');
+        $in = Point::where('user_id', $this->id)->where('sum', true)->sum('amount');
 
         return $in;
     }
