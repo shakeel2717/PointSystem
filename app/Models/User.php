@@ -55,8 +55,8 @@ class User extends Authenticatable
 
     public function balance()
     {
-        $in = Point::where('sum', true)->sum('amount');
-        $out = Point::where('sum', false)->sum('amount');
+        $in = Point::where('sum', true)->where('user_id', $this->id)->sum('amount');
+        $out = Point::where('sum', false)->where('user_id', $this->id)->sum('amount');
 
         return $in - $out;
     }
