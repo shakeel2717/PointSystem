@@ -58,7 +58,7 @@ class PointController extends Controller
     {
         $validted = $request->validate([
             'phone' => 'required|numeric|exists:users',
-            'amount' => 'required|numeric|digits_between:1,99999999999',
+            'amount' => 'required|numeric|min:1',
             'type' => 'required|string',
             'reference' => 'nullable|string',
         ]);
