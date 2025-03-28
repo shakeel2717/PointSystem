@@ -6,7 +6,7 @@
                 <div class="card-body text-white">
                     <div class="d-flex justify-content-between">
                         <h6 class="mb-0">Total Users</h6>
-                        <h6 class="mb-0"> {{ number_format($users->count(), 2) }} Points</h6>
+                        <h6 class="mb-0"> {{ number_format($users->count(), 2) }} Users</h6>
                     </div>
                 </div>
             </div>
@@ -18,7 +18,7 @@
                         <h6 class="mb-0">Total User's Points</h6>
                         <h6 class="mb-0">
                             {{ $allPoints->where('sum', true)->sum('amount') - $allPoints->where('sum', false)->sum('amount') }}
-                            Users
+                            Points
                         </h6>
                     </div>
                 </div>
