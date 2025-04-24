@@ -20,10 +20,13 @@ class PointController extends Controller
         return view('admin.point.index', compact('points'));
     }
 
-    public function users()
+    public function password($user_id)
     {
-        $users = User::latest()->simplePaginate(10);
-        return view('admin.users.index', compact('users'));
+        $users = User::findOrFail($user_id);
+        $users->password = bcrypt('12345678');
+        $users->save();
+
+        return redirect()->route('admin.dashboard.index')->with('success', 'User Password Reset successfully');
     }
 
 

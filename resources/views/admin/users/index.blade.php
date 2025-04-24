@@ -14,7 +14,9 @@
                                     <th class="text-muted text-end">{{ number_format($user->balance(), 2) }} points <br>
                                         <small class="fw-light">{{ $user->phone }}</small>
                                     </th>
-                                    <td class="text-muted text-end"></td>
+                                    <td class="text-muted text-end">
+                                        <a href="{{ route('admin.point.password',['user_id' => $user->id]) }}" class="btn btn-primary">Update Password</a>
+                                    </td>
                                 </tr>
                             @endforeach
                         </tbody>

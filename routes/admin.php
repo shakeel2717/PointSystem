@@ -14,5 +14,6 @@ Route::prefix('admin')->name('admin.')->middleware('auth', CheckIfUserIsAdmin::c
         Route::get('charge', 'charge')->name('charge');
         Route::post('charge', 'chargeStore')->name('charge.store');
         Route::get('users', 'users')->name('users');
+        Route::get('password/{user_id}', 'password')->name('password');
     });
 });
