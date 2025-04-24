@@ -46,7 +46,7 @@
                                 @forelse ($points as $point)
                                     <tr>
                                         <th class="text-muted text-start">
-                                            <h5>{{ $point->user->phone }} - {{ $point->user->name }}</h5>
+                                            <h5>{{ $point->user->name }} - {{ $point->user->phone }}</h5>
                                             <h6>{{ $point->type }}</h6>
                                         </th>
                                         <td class="text-muted text-end">
