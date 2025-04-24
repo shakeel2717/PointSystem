@@ -73,7 +73,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link fs-5" href="{{ route('admin.dashboard.index') }}">
+                            <a class="nav-link fs-5" href="{{ route('admin.users.index') }}">
                                 <i class="bi bi-people"></i>
                                 All Users
                             </a>

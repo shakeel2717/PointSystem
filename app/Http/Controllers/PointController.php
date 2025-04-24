@@ -20,6 +20,12 @@ class PointController extends Controller
         return view('admin.point.index', compact('points'));
     }
 
+    public function users()
+    {
+        $points = User::latest()->simplePaginate(10);
+        return view('admin.users.index', compact('points'));
+    }
+
 
     public function add()
     {
