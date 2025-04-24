@@ -15,7 +15,10 @@
                                         <small class="fw-light">{{ $user->phone }}</small>
                                     </th>
                                     <td class="text-muted text-end">
-                                        <a href="{{ route('admin.point.password',['user_id' => $user->id]) }}" class="btn btn-primary">Update Password</a>
+                                        <a href="{{ route('admin.point.password',['user_id' => $user->id]) }}" class="btn btn-warning">Update Password</a>
+                                    </td>
+                                    <td class="text-muted text-end">
+                                        <a href="{{ route('admin.point.delete',['user_id' => $user->id]) }}" class="btn btn-dabger">Delete</a>
                                     </td>
                                 </tr>
                             @endforeach

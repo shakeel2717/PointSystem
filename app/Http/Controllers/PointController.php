@@ -37,6 +37,15 @@ class PointController extends Controller
     }
 
 
+    public function delete($user_id)
+    {
+        $users = User::findOrFail($user_id);
+        $users->delete();
+
+        return redirect()->route('admin.dashboard.index')->with('success', 'User Deleted successfully');
+    }
+
+
     public function add()
     {
         $points = Point::where('sum', true)->get();
