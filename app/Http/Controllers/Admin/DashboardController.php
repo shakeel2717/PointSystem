@@ -16,7 +16,7 @@ class DashboardController extends Controller
     {
         $users = User::get();
         $points = Point::latest()->limit(10)->get();
-        $allPoints = Point::latest()->limit(10)->get();
+        $allPoints = Point::latest()->get();
         return view('admin.dashboard.index', compact('points', 'users', 'allPoints'));
     }
 
