@@ -3,7 +3,7 @@
     <div class="row mt-5">
         <div class="col-md-12">
             <div class="card border-0 mt-5">
-                <h4 class="card-title">All Transactions</h4>
+                <h4 class="card-title">All Users ({{$users->count()}})</h4>
                 <div class="table-responsive">
                     <table class="table table-borderless">
                         <tbody>
@@ -11,7 +11,7 @@
                                 <tr class="bg-white shadow-sm border-muted rounded-3 border">
                                     <th class="text-muted text-start">{{ $user->name }} <br> <small
                                             class="fw-light">{{ $user->created_at->diffForHumans() }}</small></th>
-                                    <th class="text-muted text-end">{{ number_format($user->balance(), 2) }} users <br>
+                                    <th class="text-muted text-end">{{ number_format($user->balance(), 2) }} points <br>
                                         <small class="fw-light">{{ $user->phone }}</small>
                                     </th>
                                     <td class="text-muted text-end"></td>
