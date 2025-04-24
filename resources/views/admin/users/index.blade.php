@@ -7,12 +7,12 @@
                 <div class="table-responsive">
                     <table class="table table-borderless">
                         <tbody>
-                            @foreach ($users as $point)
+                            @foreach ($users as $user)
                                 <tr class="bg-white shadow-sm border-muted rounded-3 border">
-                                    <th class="text-muted text-start">{{ $point->user->name }} <br> <small
-                                            class="fw-light">{{ $point->created_at->diffForHumans() }}</small></th>
-                                    <th class="text-muted text-end">{{ number_format($point->amount, 2) }} Points <br>
-                                        <small class="fw-light">{{ $point->type }}</small>
+                                    <th class="text-muted text-start">{{ $user->name }} <br> <small
+                                            class="fw-light">{{ $user->created_at->diffForHumans() }}</small></th>
+                                    <th class="text-muted text-end">{{ number_format($user->balance(), 2) }} users <br>
+                                        <small class="fw-light">{{ $user->phone }}</small>
                                     </th>
                                     <td class="text-muted text-end"></td>
                                 </tr>
