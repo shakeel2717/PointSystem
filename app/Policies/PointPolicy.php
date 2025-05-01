@@ -13,7 +13,7 @@ class PointPolicy
      */
     public function viewAny(User $user): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -21,7 +21,7 @@ class PointPolicy
      */
     public function view(User $user, Point $point): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -29,7 +29,7 @@ class PointPolicy
      */
     public function create(User $user): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -37,7 +37,7 @@ class PointPolicy
      */
     public function update(User $user, Point $point): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -45,7 +45,7 @@ class PointPolicy
      */
     public function delete(User $user, Point $point): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -53,7 +53,7 @@ class PointPolicy
      */
     public function restore(User $user, Point $point): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -61,6 +61,6 @@ class PointPolicy
      */
     public function forceDelete(User $user, Point $point): bool
     {
-        return false;
+        return true;
     }
 }
