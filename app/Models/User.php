@@ -63,6 +63,13 @@ class User extends Authenticatable implements FilamentUser
         return $in - $out;
     }
 
+    public function getBalanceAttribute()
+    {
+        $in = Point::where('sum', true)->where('user_id', $this->id)->sum('amount');
+        $out = Point::where('sum', false)->where('user_id', $this->id)->sum('amount');
+        return $in - $out;
+    }
+
     public function spendThisMonth()
     {
         $out = Point::where('user_id', $this->id)->where('sum', false)->whereMonth('created_at', now()->month)->sum('amount');
