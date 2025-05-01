@@ -18,4 +18,4 @@ Route::resource('editprofile', EditProfileController::class);
 Route::resource('editpassword', EditPasswordController::class);
 
 require __DIR__ . '/auth.php';
-require __DIR__ . '/admin.php';
+// require __DIR__ . '/admin.php';
